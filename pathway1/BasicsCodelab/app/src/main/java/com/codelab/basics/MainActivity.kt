@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -59,7 +60,9 @@ fun OnboardingPreview() {
 @Composable
 fun MyApp(modifier: Modifier = Modifier) {
     // 여러 함수가 읽거나 수정하는 상태는 공통의 상위 항목에 위치해야 하는데 이 프로세스를 상태 호이스팅이라고 함.
-    var shouldShowOnboarding by remember { mutableStateOf(true) }
+    var shouldShowOnboarding by rememberSaveable { mutableStateOf(true) }
+
+    // rememberSaveable로 변경. rememberSaveable은 구성변경과 프로세스 중단에도 상태를 저장함
 
     Surface(modifier) {
         if (shouldShowOnboarding) { // Where does this come from?
