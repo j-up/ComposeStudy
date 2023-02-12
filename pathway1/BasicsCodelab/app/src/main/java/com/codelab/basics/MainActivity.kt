@@ -3,6 +3,7 @@ package com.codelab.basics
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -78,7 +79,6 @@ private fun Greetings(
     modifier: Modifier = Modifier,
     names: List<String> = List(1000) { "$it"}
 ) {
-
     LazyColumn(modifier = modifier.padding(vertical = 4.dp)) {
         items(items = names) { name ->
             Greeting(name = name)
@@ -91,7 +91,10 @@ private fun Greeting(name: String) {
     // 내부 상태 추가를 위해 mutableStateOf 추가
     // 리컴포지션 간에 상태를 유지하기위해 remember 사용 (리컴포지션 방지)
     val expanded = remember { mutableStateOf(false) }
-    val extraPadding = if (expanded.value) 48.dp else 0.dp
+
+    val extraPadding by animateDpAsState(
+        if (expanded.value) 48.dp else 0.dp
+    )
 
     Surface(
         color = MaterialTheme.colorScheme.primary,
