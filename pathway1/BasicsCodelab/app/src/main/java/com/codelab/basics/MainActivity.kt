@@ -113,7 +113,7 @@ private fun Greeting(name: String) {
         }
     }
 }
-@Preview(showBackground = true, name = "default preview", widthDp = 320)
+@Preview(showBackground = true, name = "Greeting preview", widthDp = 320)
 @Composable
 fun DefaultPreview() {
     BasicsCodelabTheme {
@@ -121,10 +121,11 @@ fun DefaultPreview() {
     }
 }
 
-@Preview(showBackground = true, name = "two preview", widthDp = 320)
+@Preview(showBackground = true, name = "Greetings preview", widthDp = 320)
 @Composable
-fun TwoPreview() {
+fun GreetingsPreview() {
     BasicsCodelabTheme {
-        Greeting("Compose")
+        Greetings(names = listOf("리스트1","리스트2"))
     }
 }
+
