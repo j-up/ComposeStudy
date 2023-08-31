@@ -158,7 +158,6 @@ fun Home() {
     val lazyListState = rememberLazyListState()
 
     // The background color. The value is changed by the current tab.
-    // TODO 1: Animate this color change.
     val backgroundColor by animateColorAsState (if (tabPage == TabPage.Home) Purple100 else Green300)
 
     // The coroutine scope for event handlers calling suspend functions.
@@ -271,8 +270,7 @@ private fun HomeFloatingActionButton(
                 contentDescription = null
             )
             // Toggle the visibility of the content with animation.
-            // TODO 2-1: Animate this visibility change.
-            if (extended) {
+            AnimatedVisibility(extended) {
                 Text(
                     text = stringResource(R.string.edit),
                     modifier = Modifier
