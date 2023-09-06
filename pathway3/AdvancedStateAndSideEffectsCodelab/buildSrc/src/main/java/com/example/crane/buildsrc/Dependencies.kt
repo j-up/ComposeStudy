@@ -78,6 +78,7 @@ object Libs {
             private const val version = "2.5.0"
             const val viewModelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:$version"
             const val viewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
+            const val viewModelLifeCycle = "androidx.lifecycle:lifecycle-runtime-compose:2.6.0-alpha03"
         }
 
         object Test {
