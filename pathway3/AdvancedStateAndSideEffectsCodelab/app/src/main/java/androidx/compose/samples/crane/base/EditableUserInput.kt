@@ -58,7 +58,7 @@ fun CraneEditableUserInput(
 
 @Composable
 fun rememberEditableUserInputState(hint: String): EditableUserInputState =
-    rememberSaveable(hint) {
+    rememberSaveable(hint, saver = EditableUserInputState.Saver) {
         EditableUserInputState(hint, hint)
     }
 
