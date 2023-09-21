@@ -24,6 +24,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.Saver
+import androidx.compose.runtime.saveable.listSaver
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.samples.crane.ui.captionTextStyle
 import androidx.compose.ui.graphics.SolidColor
@@ -57,6 +60,37 @@ fun CraneEditableUserInput(
                 MaterialTheme.typography.body1.copy(color = LocalContentColor.current)
             },
             cursorBrush = SolidColor(LocalContentColor.current)
+        )
+    }
+}
+
+@Composable
+fun rememberEditableUserInputState(hint: String): EditableUserInputState =
+    rememberSaveable(hint) {
+        EditableUserInputState(hint, hint)
+    }
+
+class EditableUserInputState(private val hint: String, initialText: String) {
+
+    var text by mutableStateOf(initialText)
+        private set
+
+    fun updateText(newText: String) {
+        text = newText
+    }
+
+    val isHint: Boolean
+        get() = text == hint
+
+    companion object {
+        val Saver: Saver<EditableUserInputState, *> = listSaver(
+            save = { listOf(it.hint, it.text) },
+            restore = {
+                EditableUserInputState(
+                    hint = it[0],
+                    initialText = it[1],
+                )
+            }
         )
     }
 }
