@@ -21,6 +21,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'org.jetbrains.kotlin.android'
 }
 
 // Reads the Google maps key that is used in the AndroidManifest
@@ -30,11 +31,11 @@ if (rootProject.file("local.properties").exists()) {
 }
 
 android {
-    compileSdkVersion 33
+    compileSdkVersion 34
     defaultConfig {
         applicationId "androidx.compose.samples.crane"
         minSdkVersion 21
-        targetSdkVersion 33
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
         vectorDrawables.useSupportLibrary = true
@@ -101,6 +102,7 @@ dependencies {
     implementation Libs.Kotlin.Coroutines.android
     implementation Libs.GoogleMaps.maps
     implementation Libs.GoogleMaps.mapsKtx
+    implementation 'androidx.core:core-ktx:+'
     constraints {
         // Volley is a transitive dependency of maps
         implementation(Libs.Volley.volley) {

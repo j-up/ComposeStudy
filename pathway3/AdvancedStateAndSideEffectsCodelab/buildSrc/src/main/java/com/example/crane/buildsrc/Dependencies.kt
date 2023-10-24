@@ -39,7 +39,7 @@ object Libs {
     }
 
     object Kotlin {
-        private const val version = "1.7.10"
+        private const val version = "1.8.0"
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$version"
         const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
         const val extensions = "org.jetbrains.kotlin:kotlin-android-extensions:$version"
@@ -59,7 +59,7 @@ object Libs {
         const val appcompat = "androidx.appcompat:appcompat:1.4.2"
 
         object Compose {
-            const val compilerVersion = "1.3.0"
+            const val compilerVersion = "1.4.0"
             const val snapshot = ""
             const val version = "1.2.1"
 
@@ -95,7 +95,7 @@ object Libs {
     }
 
     object Hilt {
-        private const val version = "2.43"
+        private const val version = "2.44"
 
         const val gradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:$version"
         const val android = "com.google.dagger:hilt-android:$version"
